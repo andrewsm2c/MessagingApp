@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of messages</title>
+</head>
+<body>
+<a href="/addMessage">New Message</a><br/>
+<a href="/logout">Logout</a><br/>
+<p>Welcome, <span th:text="${user.firstName + ' ' + user.lastName}"></span>!</p>
+<p>Messages:</p>
+<table>
+    <tr>
+        <th>Content</th>
+        <th>Sent By</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    <tr th:each="message: ${messages}">
+        <td th:text="${message.text}"></td>
+        <td th:text="${message.sentBy}"></td>
+        <td th:text="${message.date}"></td>
+    </tr>
+</table>
+</body>
+</html>
