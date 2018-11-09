@@ -68,7 +68,8 @@ public class MessageController {
     }
 
     @GetMapping("/addMessage")
-    public String addMessage(Model model) {
+    public String addMessage(Model model, Principal principal) {
+        model.addAttribute("user", userRepository.findByUsername(principal.getName()));
         model.addAttribute("message", new Message());
         return "addMessage";
     }
